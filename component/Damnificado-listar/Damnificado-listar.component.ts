@@ -27,9 +27,13 @@ constructor(private aS:DamnificadoService){
     }
   }
 
-ngOnInit(): void {
-this.aS.list().subscribe(data=>{
-  this.dataSource=new MatTableDataSource(data);
-})
+  ngOnInit(): void {
+    this.aS.list().subscribe(data=>{
+      this.dataSource=new MatTableDataSource(data);
+    })
+
+    this.aS.getList().subscribe(data=>{
+      this.dataSource=new MatTableDataSource(data);
+    })
 }
 }
