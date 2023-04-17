@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <form [formGroup]="form"(submit)="aceptar()">
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>numero</mat-label>
+      <input matInput placeholder="numero" formControlName="numero">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>cvv</mat-label>
+      <input matInput placeholder="cvv" formControlName="cvv">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>vencimiento</mat-label>
+      <input matInput placeholder="vencimiento" formControlName="vencimiento">
+    </mat-form-field>
+    
+    <h1>{{mensaje}} </h1>
+
+    <button mat-raised-button color="primary" (click)="aceptar()">Aceptar</button>
+    <button mat-raised-button color="warn" routerLink="/cuentabancarias">Cancelar</button>
+<p>{{mensaje}}</p>
+
+  </form>
+</body>
+</html>
