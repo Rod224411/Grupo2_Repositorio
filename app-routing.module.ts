@@ -7,6 +7,8 @@ import { DamnificadoComponent } from './component/Damnificado/Damnificado.compon
 import { DamnificadoCreaeditaComponent } from './component/Damnificado/damnificado-creaedita/damnificado-creaedita.component';
 import { cuentabancariaComponent } from './component/cuentabancaria/cuentabancaria.component';
 import { cuentabancariaCreaeditaComponent } from './component/cuentabancaria/cuentabancaria-creaedita/cuentabancaria-creaedita.component';
+import { UbicacionComponent } from './component/ubicacion/ubicacion.component';
+import { UbicacionCreaeditaComponent } from './component/ubicacion/ubicacion-creaedita/ubicacion-creaedita.component';
 
 
 
@@ -29,7 +31,13 @@ const routes: Routes = [
       {
         path:'nuevo',component:cuentabancariaCreaeditaComponent
       }
-    ]}
+    ]},
+   {    
+     path:'Ubicaciones',component:UbicacionComponent,children:[
+    {
+      path:'nuevo',component:UbicacionCreaeditaComponent
+    }
+  ]}
 ];
 
 
