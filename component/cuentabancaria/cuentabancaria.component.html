@@ -1,2 +1,5 @@
-[InternetShortcut]
-URL=https://github.com/Rod224411/Grupo2_Repositorio/blob/main/component/cuentabancaria.component.html
+<router-outlet></router-outlet>
+<div [hidden]="route.children.length!==0">
+<app-cuentabancaria-listar></app-cuentabancaria-listar>
+<app-cuentabancaria-creaedita></app-cuentabancaria-creaedita>
+</div>
