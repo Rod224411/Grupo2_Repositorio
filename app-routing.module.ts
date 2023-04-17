@@ -5,6 +5,8 @@ import { AuthorComponent } from './component/author/author.component';
 import { AuthorCreaeditaComponent } from './component/author/author-creaedita/author-creaedita.component';
 import { DamnificadoComponent } from './component/Damnificado/Damnificado.component';
 import { DamnificadoCreaeditaComponent } from './component/Damnificado/damnificado-creaedita/damnificado-creaedita.component';
+import { cuentabancariaComponent } from './component/cuentabancaria/cuentabancaria.component';
+import { cuentabancariaCreaeditaComponent } from './component/cuentabancaria/cuentabancaria-creaedita/cuentabancaria-creaedita.component';
 
 
 
@@ -21,8 +23,13 @@ const routes: Routes = [
       {
         path:'nuevo',component:DamnificadoCreaeditaComponent
       }
-    ]
-  }
+    ]},
+  {
+    path:'cuentabancarias',component:cuentabancariaComponent,children:[
+      {
+        path:'nuevo',component:cuentabancariaCreaeditaComponent
+      }
+    ]}
 ];
 
 
