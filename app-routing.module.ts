@@ -9,7 +9,7 @@ import { cuentabancariaComponent } from './component/cuentabancaria/cuentabancar
 import { cuentabancariaCreaeditaComponent } from './component/cuentabancaria/cuentabancaria-creaedita/cuentabancaria-creaedita.component';
 import { UbicacionComponent } from './component/ubicacion/ubicacion.component';
 import { UbicacionCreaeditaComponent } from './component/ubicacion/ubicacion-creaedita/ubicacion-creaedita.component';
-
+import { DonadorEditaComponent } from './component/donador/donador-edita/donador-edita.component';
 
 
 const routes: Routes = [
@@ -37,7 +37,15 @@ const routes: Routes = [
     {
       path:'nuevo',component:UbicacionCreaeditaComponent
     }
-  ]}
+  ]
+ }
+  {
+    path:'Donador',component:DonadorComponent,children:[
+      {
+        path:'nuevo',component:DonadorEditaComponent
+      }
+    ]
+  }
 ];
 
 
