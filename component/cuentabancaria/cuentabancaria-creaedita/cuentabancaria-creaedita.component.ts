@@ -21,6 +21,7 @@ export class cuentabancariaCreaeditaComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
+      id: new FormControl(),
       numero: new FormControl(),
       cvv: new FormControl(),
       vencimiento: new FormControl()      
@@ -28,6 +29,7 @@ export class cuentabancariaCreaeditaComponent implements OnInit {
   }
 
   aceptar(): void {
+    this.cuentabancaria.id=this.form.value['id'];
     this.cuentabancaria.numero = this.form.value['numero'];
     this.cuentabancaria.cvv = this.form.value['cvv'];
     this.cuentabancaria.vencimiento = this.form.value['vencimiento'];    
