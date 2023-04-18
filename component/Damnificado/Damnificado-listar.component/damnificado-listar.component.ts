@@ -10,7 +10,7 @@ import { DamnificadoService } from 'src/app/service/Damnificado.service';
 export class DamnificadoListarComponent implements OnInit{
 lista: Damnificado[]=[]
 dataSource:MatTableDataSource<Damnificado>=new MatTableDataSource();
-displayedColumns:string[]=['dni','nombres','apellidos','correo']
+displayedColumns:string[]=['id','dni','nombres','apellidos','accion01']
 
 constructor(private aS:DamnificadoService){
 }
@@ -35,5 +35,9 @@ constructor(private aS:DamnificadoService){
     this.aS.getList().subscribe(data=>{
       this.dataSource=new MatTableDataSource(data);
     })
+}
+
+filtrar(e:any){
+  this.dataSource.filter=e.target.value.trim();
 }
 }
