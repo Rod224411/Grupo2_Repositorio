@@ -42,10 +42,10 @@ const routes: Routes = [
     ]},
     {
     path:'Damnificados',component:DamnificadoComponent,children:[
-      {
-        path:'nuevo',component:DamnificadoCreaeditaComponent
-      }
-    ]},
+      {path:'nuevo',component:DamnificadoCreaeditaComponent },
+      {path:'edicion/:id',component:DamnificadoCreaeditaComponent}
+    ]
+    },
   {
     path:'cuentabancarias',component:cuentabancariaComponent,children:[
       {
