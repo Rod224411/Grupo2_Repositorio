@@ -10,6 +10,26 @@ import { cuentabancariaCreaeditaComponent } from './component/cuentabancaria/cue
 import { UbicacionComponent } from './component/ubicacion/ubicacion.component';
 import { UbicacionCreaeditaComponent } from './component/ubicacion/ubicacion-creaedita/ubicacion-creaedita.component';
 import { DonadorEditaComponent } from './component/donador/donador-edita/donador-edita.component';
+import { Component, NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { tipo_de_caso } from './model/tipo-de-caso';
+import { TipoDeCasoCreaeditaComponent } from './component/tipo-de-caso/tipo-de-caso-creaedita/tipo-de-caso-creaedita.component';
+
+const routes: Routes = [
+  {
+  path:'tipo',component:tipo_de_caso,children:[
+    {path:'nuevo',component:TipoDeCasoCreaeditaComponent}
+  ]
+
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
 
 
 const routes: Routes = [
