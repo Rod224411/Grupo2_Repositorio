@@ -10,7 +10,7 @@ import { cuentabancariaService } from 'src/app/service/cuentabancaria.service';
 export class cuentabancariaListarComponent implements OnInit{
 lista: cuentabancaria[]=[]
 dataSource:MatTableDataSource<cuentabancaria>=new MatTableDataSource();
-displayedColumns:string[]=['numero','cvv','vencimiento']
+displayedColumns:string[]=['id','numero','cvv','vencimiento']
 
 constructor(private aS:cuentabancariaService){
 }
