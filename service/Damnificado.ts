@@ -27,4 +27,15 @@ export class DamnificadoService {
   getList() {
     return this.listaCambio.asObservable();
   }
+
+
+  //lo que se agrega para el editar
+  listId(id: number) {
+    return this.http.get<Damnificado>(`${this.url}/${id}`);
+  }
+
+  update(aut: Damnificado) { //http HttpClientModule: get-post-put-delete, hacer cuadro comparativo
+    return this.http.put(this.url + '/' + aut.id, aut);
+  }
 }
+
