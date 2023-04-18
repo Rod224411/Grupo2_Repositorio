@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class cuentabancariaCreaeditaComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
-  Cuentabancaria:cuentabancaria = new cuentabancaria();
+  cuentabancaria:cuentabancaria = new cuentabancaria();
   mensaje:string = 'Completa';
 
 
