@@ -18,7 +18,7 @@ private url=`${base_url}/cuentabancarias`
   }
 
   insert(CuentaBancaria:cuentabancaria) {
-    return this.http.post(this.url, cuentabancaria);
+   return this.http.post(this.url, CuentaBancaria);
   }
 
   setList(ListaNueva:cuentabancaria[]) {
