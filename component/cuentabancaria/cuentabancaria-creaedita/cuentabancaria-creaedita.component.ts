@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { cuentabancaria } from 'src/app/model/cuentabancaria';
-
+import * as moment from 'moment';
 import { FormGroup, FormControl } from '@angular/forms';
 import { cuentabancariaService } from 'src/app/service/cuentabancaria.service';
 import { Router } from '@angular/router';
@@ -13,7 +13,9 @@ import { Router } from '@angular/router';
 export class cuentabancariaCreaeditaComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
-  cuentabancaria:cuentabancaria = new cuentabancaria();
+  cuentabancaria:cuentabancaria = new cuentabancaria();  
+  maxFecha: Date = moment().add(-1, 'days').toDate();
+  id: number = 0;
   mensaje:string = 'Completa';
 
 
@@ -24,7 +26,7 @@ export class cuentabancariaCreaeditaComponent implements OnInit {
       id: new FormControl(),
       numero: new FormControl(),
       cvv: new FormControl(),
-      vencimiento: new FormControl()      
+      vencimiento: new FormControl()
     });
   }
 
@@ -32,7 +34,7 @@ export class cuentabancariaCreaeditaComponent implements OnInit {
     this.cuentabancaria.id=this.form.value['id'];
     this.cuentabancaria.numero = this.form.value['numero'];
     this.cuentabancaria.cvv = this.form.value['cvv'];
-    this.cuentabancaria.vencimiento = this.form.value['vencimiento'];    
+    this.cuentabancaria.vencimiento = this.form.value['vencimiento'];
 
     if (
       this.form.value['numero'].length > 0
