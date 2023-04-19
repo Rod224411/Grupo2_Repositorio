@@ -14,8 +14,7 @@ export class cuentabancariaCreaeditaComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
   cuentabancaria:cuentabancaria = new cuentabancaria();  
-  maxFecha: Date = moment().add(-1, 'days').toDate();
-  id: number = 0;
+  maxFecha: Date = moment().add(-1, 'days').toDate();  
   mensaje:string = 'Completa';
 
 
