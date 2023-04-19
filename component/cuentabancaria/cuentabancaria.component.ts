@@ -14,4 +14,6 @@ constructor(public route:ActivatedRoute){
   ngOnInit(): void {
 
   }
+
+
 }
