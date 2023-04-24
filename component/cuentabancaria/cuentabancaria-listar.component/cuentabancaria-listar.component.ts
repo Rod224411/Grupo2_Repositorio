@@ -41,7 +41,3 @@ filtrar(e:any){
   this.dataSource.filter=e.target.value.trim();
 }
 }
-      this.dataSource=new MatTableDataSource(data);
-    })
-}
-}
