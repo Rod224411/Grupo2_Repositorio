@@ -10,7 +10,7 @@ import { UbicacionService } from 'src/app/service/Ubicacion.service';
 export class UbicacionlistarComponent implements OnInit{
   lista: Ubicacion[]=[]
   dataSource:MatTableDataSource<Ubicacion>=new MatTableDataSource();
-  displayedColumns:string[]=['id','departamento','distrito','direccion']
+  displayedColumns:string[]=['id','departamento','distrito','direccion','accion01']
 
   constructor(private aS:UbicacionService){
 
@@ -33,6 +33,11 @@ export class UbicacionlistarComponent implements OnInit{
     this.aS.list().subscribe(data=>{
       this.dataSource=new MatTableDataSource(data);
     })
-
+    this.aS.getList().subscribe(data=>{
+      this.dataSource=new MatTableDataSource(data);
+    })
+  }
+  filtrar(e:any){
+    this.dataSource.filter=e.target.value.trim();
   }
   }
