@@ -3,7 +3,7 @@ import { cuentabancaria } from 'src/app/model/cuentabancaria';
 import * as moment from 'moment';
 import { FormGroup, FormControl } from '@angular/forms';
 import { cuentabancariaService } from 'src/app/service/cuentabancaria.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-cuentabancaria-creaedita',
@@ -13,14 +13,20 @@ import { Router } from '@angular/router';
 export class cuentabancariaCreaeditaComponent implements OnInit {
 
   form: FormGroup = new FormGroup({});
-  cuentabancaria:cuentabancaria = new cuentabancaria();  
-  maxFecha: Date = moment().add(-1, 'days').toDate();  
+  cuentabancaria:cuentabancaria = new cuentabancaria();
+  maxFecha: Date = moment().add(-1, 'days').toDate();
   mensaje:string = 'Completa';
+  id: number = 0;
+  edicion: boolean = false;
 
-
-  constructor(private aS: cuentabancariaService, private router: Router) {}
+  constructor(private aS: cuentabancariaService, private router: Router,private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.route.params.subscribe((data: Params) => {
+      this.id = data['id'];
+      this.edicion = data['id'] != null;
+      this.init();
+    });
     this.form = new FormGroup({
       id: new FormControl(),
       numero: new FormControl(),
@@ -58,7 +64,7 @@ export class cuentabancariaCreaeditaComponent implements OnInit {
       this.mensaje = 'Complete los campos requeridos!';
     }
 }
-  
+
   init() {
     if (this.edicion) {
       this.aS.listId(this.id).subscribe((data) => {
@@ -66,7 +72,7 @@ export class cuentabancariaCreaeditaComponent implements OnInit {
           id: new FormControl(data.id),
           numero: new FormControl(data.numero),
           cvv: new FormControl(data.cvv),
-          vencimiento: new FormControl(data.vencimiento)          
+          vencimiento: new FormControl(data.vencimiento)
         });
       });
     }
