@@ -50,7 +50,8 @@ const routes: Routes = [
     path:'cuentabancarias',component:cuentabancariaComponent,children:[
       {
         path:'nuevo',component:cuentabancariaCreaeditaComponent
-      }
+      },
+      {path:'edicion/:id',component:cuentabancariaCreaeditaComponent}
     ]},
    {    
      path:'Ubicaciones',component:UbicacionComponent,children:[
