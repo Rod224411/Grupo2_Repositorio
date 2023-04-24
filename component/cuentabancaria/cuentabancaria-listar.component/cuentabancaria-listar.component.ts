@@ -10,7 +10,7 @@ import { cuentabancariaService } from 'src/app/service/cuentabancaria.service';
 export class cuentabancariaListarComponent implements OnInit{
 lista: cuentabancaria[]=[]
 dataSource:MatTableDataSource<cuentabancaria>=new MatTableDataSource();
-displayedColumns:string[]=['id','numero','cvv','vencimiento']
+displayedColumns:string[]=['id','numero','cvv','vencimiento','accion01']
 
 constructor(private aS:cuentabancariaService){
 }
@@ -27,12 +27,20 @@ constructor(private aS:cuentabancariaService){
     }
   }
 
-ngOnInit(): void {
+  ngOnInit(): void {
     this.aS.list().subscribe(data=>{
       this.dataSource=new MatTableDataSource(data);
     })
 
     this.aS.getList().subscribe(data=>{
+      this.dataSource=new MatTableDataSource(data);
+    })
+}
+
+filtrar(e:any){
+  this.dataSource.filter=e.target.value.trim();
+}
+}
       this.dataSource=new MatTableDataSource(data);
     })
 }
