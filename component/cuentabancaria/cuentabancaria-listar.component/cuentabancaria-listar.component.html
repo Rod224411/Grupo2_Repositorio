@@ -28,6 +28,12 @@
       <th mat-header-cell *matHeaderCellDef>Vencimiento</th>
       <td mat-cell *matCellDef="let element">{{ element.vencimiento }}</td>
     </ng-container>
+    
+    <ng-container matColumnDef="accion01">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+      button mat-raised-button color="warn" [routerLink]="['edicion',element.id]">Actualizar</button>
+    </ng-container>
 
     <!--- Table Rows -->
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
