@@ -24,4 +24,10 @@ this.listaCambio.next(listaNueva);
   getList(){
     return this.listaCambio.asObservable();
   }
+  listId(id: number) {
+    return this.http.get<Ubicacion>(`${this.url}/${id}`);
+  }
+  update(aut: Ubicacion) {
+    return this.http.put(this.url + "/" + aut.id, aut);
+  }
 }
