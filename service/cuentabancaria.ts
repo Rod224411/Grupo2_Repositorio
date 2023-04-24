@@ -28,4 +28,12 @@ private url=`${base_url}/cuentabancarias`
   getList() {
     return this.listaCambio.asObservable();
   }
+     
+  listId(id: number) {
+    return this.http.get<cuentabancaria>(`${this.url}/${id}`);
+  }
+
+  update(aut: cuentabancaria) { //http HttpClientModule: get-post-put-delete, 
+    return this.http.put(this.url + '/' + aut.id, aut);
+  }
 }
