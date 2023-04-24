@@ -54,10 +54,9 @@ const routes: Routes = [
       {path:'edicion/:id',component:cuentabancariaCreaeditaComponent}
     ]},
    {    
-     path:'Ubicaciones',component:UbicacionComponent,children:[
-    {
-      path:'nuevo',component:UbicacionCreaeditaComponent
-    }
+    path: 'Ubicaciones', component: UbicacionComponent, children: [
+      { path: 'nuevo', component: UbicacionCreaeditaComponent },
+      { path: 'edicion/:id', component: UbicacionCreaeditaComponent }
   ]
  }
   {
