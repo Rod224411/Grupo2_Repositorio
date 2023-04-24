@@ -38,15 +38,37 @@ export class cuentabancariaCreaeditaComponent implements OnInit {
     if (
       this.form.value['numero'].length > 0
     ) {
-      this.aS.insert(this.cuentabancaria).subscribe((data) => {
-        this.aS.list().subscribe((data) => {
-          this.aS.setList(data);
-        });
-      });
+      if(this.edicion){
+        //actualice
+        this.aS.update(this.cuentabancaria).subscribe(()=>{
+          this.aS.list().subscribe(data=>{
+            this.aS.setList(data);
+          })
+        })
+      }else{
+        this.aS.insert(this.cuentabancaria).subscribe(data=>{
+          this.aS.list().subscribe(data=>{
+            this.aS.setList(data);
+          })
+        })
+      }
       this.router.navigate(['cuentabancarias']);
       this.mensaje = 'Buen Trabajo';
     } else {
       this.mensaje = 'Complete los campos requeridos!';
+    }
+}
+  
+  init() {
+    if (this.edicion) {
+      this.aS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          id: new FormControl(data.id),
+          numero: new FormControl(data.numero),
+          cvv: new FormControl(data.cvv),
+          vencimiento: new FormControl(data.vencimiento)          
+        });
+      });
     }
   }
 }
