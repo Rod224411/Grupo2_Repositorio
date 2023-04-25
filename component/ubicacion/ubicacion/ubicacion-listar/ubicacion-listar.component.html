@@ -1,0 +1,46 @@
+<button class="mi-boton" (click)="mostrarTabla()">Mostrar/Ocultar tabla de Ubicaciones</button>
+<div style="text-align: right;">
+  <button mat-raised-button color="primary" routerLink="/Ubicaciones/nuevo" >Nueva Ubicacion</button>
+</div>
+
+<div *ngIf="tablaVisible">
+  <mat-form-field>
+    <input matInput (keyup)="filtrar($event)" placeholder="Buscar">
+  </mat-form-field>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Column Definitions -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>id</th>
+      <td mat-cell *matCellDef="let element">{{element.id}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="departamento">
+      <th mat-header-cell *matHeaderCellDef>departamento</th>
+      <td mat-cell *matCellDef="let element">{{element.departamento}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="distrito">
+      <th mat-header-cell *matHeaderCellDef>distrito</th>
+      <td mat-cell *matCellDef="let element">{{element.distrito}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="direccion">
+      <th mat-header-cell *matHeaderCellDef>direccion</th>
+      <td mat-cell *matCellDef="let element">{{element.direccion}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="accion01">
+      <th mat-header-cell *matHeaderCellDef> Acciones </th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-raised-button color="warn" [routerLink]="['edicion',element.id]">Actualizar</button>
+        <button mat-raised-button color="accent" (click)="boton_eliminar(element.id)">Eliminar {{element.id}}</button>
+    </ng-container>
+
+    <!--- Table Rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+  </table>
+</div>
+
