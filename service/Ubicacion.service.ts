@@ -30,4 +30,7 @@ this.listaCambio.next(listaNueva);
   update(aut: Ubicacion) {
     return this.http.put(this.url + "/" + aut.id, aut);
   }
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }
