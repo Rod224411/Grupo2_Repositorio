@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { cuentabancaria } from 'src/app/model/cuentabancaria';
 import {MatTableDataSource} from '@angular/material/table'
 import { cuentabancariaService } from 'src/app/service/cuentabancaria.service';
+import { Route, Router } from '@angular/router';
 @Component({
   selector: 'app-cuentabancaria-listar',
   templateUrl: './cuentabancaria-listar.component.html',
@@ -12,7 +13,7 @@ lista: cuentabancaria[]=[]
 dataSource:MatTableDataSource<cuentabancaria>=new MatTableDataSource();
 displayedColumns:string[]=['id','numero','cvv','vencimiento','accion01']
 
-constructor(private aS:cuentabancariaService){
+constructor(private aS:cuentabancariaService,private router:Router){
 }
 
   // Variable para determinar si la tabla se muestra o no
@@ -40,4 +41,12 @@ constructor(private aS:cuentabancariaService){
 filtrar(e:any){
   this.dataSource.filter=e.target.value.trim();
 }
+
+boton_eliminar(idd:number){
+  this.aS.delete(idd).subscribe(data=>{
+    this.aS.list().subscribe(data=>{
+      this.aS.setList(data);
+  });})
+}
+
 }
