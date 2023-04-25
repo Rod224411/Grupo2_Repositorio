@@ -13,9 +13,10 @@ export class DonadorListarComponent {
 
   lista: Donador[]=[]
   dataSource:MatTableDataSource<Donador>=new MatTableDataSource();
+  idMayor: number = 0;
   displayedColumns:string[]=['dni','nombres','apellidos']
 
-  constructor(private aS:DonadorService){
+  constructor(private aS:DonadorService,  private dialog:MatDialog){
 
   }
 
