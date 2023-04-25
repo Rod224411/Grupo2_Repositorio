@@ -108,7 +108,7 @@ module.exports = function () {
     },
   ],
 
-     CuentasBancarias:[
+     cuentabancarias:[
       {
       numero: 465465456456455,
       cvv: 455,
