@@ -4,10 +4,10 @@
     <input matInput (keyup)="filtrar($event)"placeholder="Buscar">
   </mat-form-field>
 
-  <button class="mi-boton" (click)="mostrarTabla()">Mostrar/Ocultar tabla de Damnificados</button>
+  <button class="mi-boton" (click)="mostrarTabla()" >Mostrar/Ocultar tabla de Damnificados</button>
 
   <div style="text-align: right;">
-    <button mat-raised-button color="primary" routerLink="/Damnificados/nuevo" >Nuevo</button>
+    <button mat-raised-button color="primary" routerLink="/Damnificados/nuevo" >Nuevo Damnificado</button>
   </div>
 
   <table *ngIf="tablaVisible" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -38,6 +38,7 @@
               <th mat-header-cell *matHeaderCellDef> Acciones </th>
               <td mat-cell *matCellDef="let element">
                 <button mat-raised-button color="warn" [routerLink]="['edicion',element.id]">Actualizar</button>
+                <button mat-raised-button color="accent" (click)="boton_eliminar(element.id)">Eliminar {{element.id}}</button>
             </ng-container>
 
     <!--- Table Rows -->
