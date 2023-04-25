@@ -37,5 +37,10 @@ export class DamnificadoService {
   update(aut: Damnificado) { //http HttpClientModule: get-post-put-delete, hacer cuadro comparativo
     return this.http.put(this.url + '/' + aut.id, aut);
   }
+
+    //para eliminar damnificado
+  delete(id: number) {
+    return this.http.delete(`${this.url}/${id}`);
+  }
 }
 
