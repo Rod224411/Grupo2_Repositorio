@@ -36,6 +36,20 @@ export class DonadorListarComponent {
   this.aS.list().subscribe(data=>{
     this.dataSource=new MatTableDataSource(data);
   })
+    this.aS.getList().subscribe(data=>{
+      this.dataSource=new MatTableDataSource(data);
+    })
+  }
+   confirm(id: number) {
+    this.idMayor = id;
+    this
+  }
+  eliminar(id: number) {
+    this.aS.delete(id).subscribe(() => {
+      this.aS.list().subscribe(data => {
+        this.aS.setList(data);
+      })
+    })
   }
   }
 
