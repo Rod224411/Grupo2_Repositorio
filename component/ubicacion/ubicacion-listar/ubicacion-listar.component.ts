@@ -33,11 +33,18 @@ export class UbicacionlistarComponent implements OnInit{
     this.aS.list().subscribe(data=>{
       this.dataSource=new MatTableDataSource(data);
     })
+
     this.aS.getList().subscribe(data=>{
       this.dataSource=new MatTableDataSource(data);
     })
   }
   filtrar(e:any){
     this.dataSource.filter=e.target.value.trim();
+  }
+  boton_eliminar(idd:number){
+    this.aS.delete(idd).subscribe(data=>{
+      this.aS.list().subscribe(data=>{
+        this.aS.setList(data);
+    });})
   }
   }

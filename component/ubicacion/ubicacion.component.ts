@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './ubicacion.component.html',
   styleUrls: ['./ubicacion.component.css']
 })
-export class UbicacionComponent implements OnInit{
+export class UbicacionComponent {
 
   constructor(public route:ActivatedRoute){
 
