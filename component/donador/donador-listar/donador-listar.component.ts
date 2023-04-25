@@ -41,10 +41,7 @@ export class DonadorListarComponent {
       this.dataSource=new MatTableDataSource(data);
     })
   }
-   confirm(id: number) {
-    this.idMayor = id;
-    this
-  }
+
   eliminar(id: number) {
     this.aS.delete(id).subscribe(() => {
       this.aS.list().subscribe(data => {
