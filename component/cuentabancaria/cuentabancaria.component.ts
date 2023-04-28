@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './cuentabancaria.component.html',
   styleUrls: ['./cuentabancaria.component.css']
 })
-export class cuentabancariaComponent implements OnInit{
+export class CuentabancariaComponent implements OnInit{
 
 constructor(public route:ActivatedRoute){
 
