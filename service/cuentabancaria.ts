@@ -10,6 +10,7 @@ const base_url = environment.base;
 })
 export class cuentabancariaService {
   private url = `${base_url}/cuentabancarias`
+  private confirmarEliminacion = new Subject<Boolean>()
   private listaCambio = new Subject<cuentabancaria[]>()
   constructor(private http: HttpClient) {}
   list() {
@@ -42,4 +43,12 @@ export class cuentabancariaService {
   delete(id: number) {
     return this.http.delete(`${this.url}/${id}`);
   }
+
+  getConfirmDelete(){
+    return this.confirmarEliminacion.asObservable();
+  }
+  setConfirmDelete(estado:Boolean){
+    this.confirmarEliminacion.next(estado);
+  }
+
 }
