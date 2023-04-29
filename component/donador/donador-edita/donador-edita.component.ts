@@ -1,21 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Damnificado } from 'src/app/model/Damnificado';
 import { Donador } from 'src/app/model/Donador';
 import { DonadorService } from 'src/app/service/Donador.service';
 
 @Component({
-  selector: 'app-donador-edita',
-  templateUrl: './donador-edita.component.html',
-  styleUrls: ['./donador-edita.component.css']
+  selector: 'app-donador-creaedita',
+  templateUrl: './donador-creaedita.component.html',
+  styleUrls: ['./donador-creaedita.component.css']
 })
 export class DonadorEditaComponent implements OnInit{
 
   form: FormGroup = new FormGroup({});
   donador:Donador = new Donador();
-  mensaje:string = 'Completa';
+  mensaje:string = 'Completa por favor';
 
+  id: number = 0;
+  edicion: boolean = false;
 
   constructor(private aS: DonadorService, private router: Router) {}
 
@@ -44,17 +45,45 @@ export class DonadorEditaComponent implements OnInit{
     this.donador.ong=this.form.value['ong'];
 
     if (
-      this.form.value['dni'].length > 0
+      this.form.value['dni'].length > 0 &&
+      this.form.value['nombres'].length> 0 &&
+      this.form.value['apellidos'].length>0
     ) {
+      if(this.edicion){
+        //actualice
+        this.aS.update(this.donador).subscribe(()=>{
+          this.aS.list().subscribe(data=>{
+            this.aS.setList(data);
+          })
+        })
+      }else{
       this.aS.insert(this.donador).subscribe((data) => {
         this.aS.list().subscribe((data) => {
           this.aS.setList(data);
         });
       });
+    }
       this.router.navigate(['Damnificados']);
       this.mensaje = 'Buen Trabajo';
     } else {
       this.mensaje = 'Complete los campos requeridos!';
+    }
+  }
+
+  init() {
+    if (this.edicion) {
+      this.aS.listId(this.id).subscribe((data) => {
+        this.form = new FormGroup({
+          dni: new FormControl(data.dni),
+          nombres: new FormControl(data.nombres),
+          apellidos: new FormControl(data.apellidos),
+          edad:new FormControl(data.edad),
+          telefono: new FormControl(data.telefono),
+          contrasena:new FormControl(data.contrasena),
+          correo:new FormControl(data.correo),
+          ong:new FormControl(data.ong)
+        });
+      });
     }
   }
 
