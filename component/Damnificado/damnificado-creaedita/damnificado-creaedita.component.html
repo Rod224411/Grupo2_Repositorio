@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <form [formGroup]="form"(submit)="aceptar()">
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>dni*</mat-label>
+      <input matInput placeholder="dni" formControlName="dni">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>nombres*</mat-label>
+      <input matInput placeholder="nombres" formControlName="nombres">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>apellidos*</mat-label>
+      <input matInput placeholder="apellidos" formControlName="apellidos">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>edad*</mat-label>
+      <input matInput placeholder="edad" formControlName="edad">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>peso</mat-label>
+      <input matInput placeholder="peso" formControlName="peso">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>telefono</mat-label>
+      <input matInput placeholder="telefono" formControlName="telefono">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>contrasena*</mat-label>
+      <input matInput placeholder="contrasena" formControlName="contrasena">
+    </mat-form-field>
+
+    <br>
+    <mat-form-field class="example-full-width">
+      <mat-label>correo*</mat-label>
+      <input matInput placeholder="correo" formControlName="correo">
+    </mat-form-field>
+    <h1>{{mensaje}} </h1>
+
+    <button mat-raised-button color="primary" (click)="aceptar()">Aceptar</button>
+    <button mat-raised-button color="warn" routerLink="/Damnificados">Cancelar</button>
+<p>{{mensaje}}</p>
+
+  </form>
+</body>
+</html>
+
